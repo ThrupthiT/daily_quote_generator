@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: thrupthi-ns #-> Give your own namespace with your name Ex: ram-ns
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app #-> Give your deployment name Ex: test-app
+  namespace: thrupthi-ns 
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: daily_quote_app #-> Give your app name app: java-1
+
+  template:
+    metadata:
+      labels:
+        app: daily_quote_app 
+
+    spec:
+      containers:
+        - name: daily_quote_container #-> Give your container name Ex: java-1-container
+
+          image: IMAGE_PLACEHOLDER
+
+          ports:
+            - containerPort: 8000 #-> make sure you mention container port properly ex: 8000 or 3000 depends on the container running.
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: daily-quote-service #-> Give your service name Ex: java-1-service
+  namespace: thrupthi-ns
+
+spec:
+  selector:
+    app: daily_quote_app
+
+  ports:
+    - protocol: TCP
+      port: 80 #-> keep the same port for service from pod port as well for best practice.
+      targetPort: 80  #-> make sure you mention container port properly ex: 8000 or 3000 depends on the container running.
+
+  type: LoadBalancer
