@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('thrupthi-dockerhub-creds') //update credentials 
-        DOCKER_IMAGE = "docker-username/image-name"  // update docker image name
+        DOCKER_IMAGE = "docker-thrupthit/daily_quote_generator"  // update docker image name
         IMAGE_TAG = "${BUILD_NUMBER}"
         NAMESPACE = "thrupthi-ns"  // update namespace name
     }
@@ -12,7 +12,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git url: 'your-repo-url', // update repository url
+                git url: 'https://github.com/ThrupthiT/daily_quote_generator', // update repository url
                     branch: 'main' // update branch name
             }
         }
