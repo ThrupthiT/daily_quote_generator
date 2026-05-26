@@ -29,7 +29,7 @@ spec:
           image: IMAGE_PLACEHOLDER
 
           ports:
-            - containerPort: 8000 #-> make sure you mention container port properly ex: 8000 or 3000 depends on the container running.
+            - containerPort: 80 #-> make sure you mention container port properly ex: 8000 or 3000 depends on the container running.
 
 ---
 apiVersion: v1
