@@ -15,16 +15,16 @@ spec:
 
   selector:
     matchLabels:
-      app: daily_quote_app #-> Give your app name app: java-1
+      app: daily-quote-app #-> Give your app name app: java-1
 
   template:
     metadata:
       labels:
-        app: daily_quote_app 
+        app: daily-quote-app 
 
     spec:
       containers:
-        - name: daily_quote_container #-> Give your container name Ex: java-1-container
+        - name: daily-quote-container #-> Give your container name Ex: java-1-container
 
           image: IMAGE_PLACEHOLDER
 
@@ -40,7 +40,7 @@ metadata:
 
 spec:
   selector:
-    app: daily_quote_app
+    app: daily-quote-app
 
   ports:
     - protocol: TCP
